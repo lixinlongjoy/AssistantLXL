@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'com_serialWidget.ui'
+# Form implementation generated from reading ui file 'comSerialWidget.ui'
 #
 # Created by: PyQt5 UI code generator 5.11.2
 #
@@ -17,11 +17,11 @@ class Ui_Form(QWidget):  # object
         Form.resize(836, 516)
 
         # QMainWindow
-        # self.mainWidget = QWidget(Form)
-        # self.setCentralWidget(self.mainWidget)
-        # self.verticalLayout_19 = QtWidgets.QVBoxLayout(self.mainWidget)
+        self.mainWidget = QWidget(Form)
+        self.setCentralWidget(self.mainWidget)
+        self.verticalLayout_19 = QtWidgets.QVBoxLayout(self.mainWidget)
         # QDialog
-        self.verticalLayout_19 = QtWidgets.QVBoxLayout(Form)
+        # self.verticalLayout_19 = QtWidgets.QVBoxLayout(Form)
         self.verticalLayout_19.setObjectName("verticalLayout_19")
         self.horizontalLayout_9 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_9.setObjectName("horizontalLayout_9")
