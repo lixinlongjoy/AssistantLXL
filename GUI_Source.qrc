@@ -1,0 +1,48 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>images/editadd.png</file>
+    <file>images/editcopy.png</file>
+    <file>images/editcut.png</file>
+    <file>images/editdelete.png</file>
+    <file>images/editedit.png</file>
+    <file>images/editpaste.png</file>
+    <file>images/fileclose.png</file>
+    <file>images/filenew.png</file>
+    <file>images/fileopen.png</file>
+    <file>images/filequit.png</file>
+    <file>images/filesave.png</file>
+    <file>images/filesaveas.png</file>
+    <file>images/icon.png</file>
+  </qresource>
+  <qresource prefix="crystal">
+    <file>images/Crystal/Crystal.PNG</file>
+    <file>images/Crystal/Crystal-character.PNG</file>
+    <file>images/Crystal/Crystal-Cl.PNG</file>
+    <file>images/Crystal/Crystal-Dl.PNG</file>
+    <file>images/Crystal/Crystal-ESR.PNG</file>
+    <file>images/Crystal/Crystal-Fa.PNG</file>
+    <file>images/Crystal/Crystal-Fp.PNG</file>
+    <file>images/Crystal/Crystal-Fs.PNG</file>
+    <file>images/Crystal/Crystal-gain.PNG</file>
+    <file>images/Crystal/Crystal-paras.PNG</file>
+    <file>images/Crystal/Crystal-Pierce.PNG</file>
+    <file>images/Crystal/Crystal-stm.PNG</file>
+  </qresource>
+  <qresource prefix="picture">
+    <file>images/Picture/1.jpg</file>
+    <file>images/Picture/2.jpg</file>
+    <file>images/Picture/3.jpg</file>
+    <file>images/Picture/4.jpg</file>
+    <file>images/Picture/5.jpg</file>
+    <file>images/Picture/6.jpg</file>
+    <file>images/Picture/7.jpg</file>
+    <file>images/Picture/8.jpg</file>
+    <file>images/Picture/9.jpg</file>
+    <file>images/Picture/10.jpg</file>
+    <file>images/Picture/11.jpg</file>
+    <file>images/Picture/12.jpeg</file>
+    <file>images/Picture/13.jpg</file>
+    <file>images/Picture/14.jpg</file>
+    <file>images/Picture/15.jpg</file>
+  </qresource>
+</RCC>
