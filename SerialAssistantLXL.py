@@ -1,3 +1,17 @@
+# 调试相关功能定义
+import logging
+# LOG_FORMAT = "%(asctime)s>%(levelname)s>%(process)d>%(processName)s>%(thread)d>%(thread)s>%(module)s>%(lineno)d>%(funcName)s>%(message)s"
+# DATE_FORMAT = "%y-%m-%d %H:%M:%S,"
+# DATE_FORMAT = "%y-%m-%d %H:%M:%S %p"
+__LOG_FORMAT = "%(asctime)s>%(levelname)s>PID:%(process)d %(thread)d>%(module)s>%(funcName)s>%(lineno)d>%(message)s"
+logging.basicConfig(level=logging.DEBUG, format=__LOG_FORMAT, )
+# logging.basicConfig(level=logging.ERROR, format=LOG_FORMAT, )
+
+# 是否打印调试信息标志
+debug = True
+if debug==True:
+    logging.debug("进入主程序，开始导入包...")
+
 import time
 from time import sleep
 import os
@@ -9,18 +23,6 @@ import threading
 from PyQt5 import QtCore,QtGui
 from PyQt5.QtGui import QIntValidator
 from PyQt5.QtWidgets import QApplication,QDialog,QMainWindow,QMessageBox,QComboBox,QLabel
-
-# 调试相关功能定义
-import logging
-# LOG_FORMAT = "%(asctime)s>%(levelname)s>%(process)d>%(processName)s>%(thread)d>%(thread)s>%(module)s>%(lineno)d>%(funcName)s>%(message)s"
-# DATE_FORMAT = "%y-%m-%d %H:%M:%S,"
-# DATE_FORMAT = "%y-%m-%d %H:%M:%S %p"
-__LOG_FORMAT = "%(asctime)s>%(levelname)s>PID:%(process)d %(thread)d>%(module)s>%(funcName)s>%(lineno)d>%(message)s"
-logging.basicConfig(level=logging.DEBUG, format=__LOG_FORMAT, )
-# logging.basicConfig(level=logging.ERROR, format=LOG_FORMAT, )
-
-# 是否打印调试信息标志
-debug = False
 
 # 配置
 # 统计线程周期
@@ -227,6 +229,11 @@ class userMain(QMainWindow,Ui_SerialAssistantLXL):
             logging.debug("鼠标移入comboBoxPort控件，即将更新串口列表")
         self.__update_comboBoxPortList()
 
+    # def on_comboBoxPort_dropdown(self,event):
+    #     print(event)
+    #
+    # def on_comboBoxPort_mousePressEvent(event):
+    #     print(event)
 
     # 更新波特率组合框
     def __update_comboBoxBandRateList(self):
@@ -374,23 +381,22 @@ class userMain(QMainWindow,Ui_SerialAssistantLXL):
                 seq+=1
             if (portBuf != ""):
                 try:
-                    if True == self.__com.open(portBuf):
-                        if debug == True:
-                            logging.debug("端口{}已打开".format(portBuf))
-                        self.pushButtonOpen.setText("关闭")
+                    self.__com.open(portBuf)
+                    if debug == True:
+                        logging.debug("端口{}已打开".format(portBuf))
+                    self.pushButtonOpen.setText("关闭")
 
-                        # 在userSerial类中已经实现了接收完成signalRcv信号机制，无需启动线程刷屏，只需将信号关联到对应的槽函数即可
-                        # # 开启接收线程刷屏
-                        # threading.Thread(target=self.__textBrowserReceiveRefresh, args=(), daemon=True).start()
-                        # 开启统计线程
-                        threading.Thread(target=self.periodUpdateStatistics, args=(), daemon=True).start()
-                    else:
-                        if debug == True:
-                            logging.warning("端口{}未成功打开".format(portBuf))
-                        self.__pushButtonOpen_State_Reset()
+                    # 在userSerial类中已经实现了接收完成signalRcv信号机制，无需启动线程刷屏，只需将信号关联到对应的槽函数即可
+                    # # 开启接收线程刷屏
+                    # threading.Thread(target=self.__textBrowserReceiveRefresh, args=(), daemon=True).start()
+                    # 开启统计线程
+                    threading.Thread(target=self.periodUpdateStatistics, args=(), daemon=True).start()
+
                 except Exception as e:
+                    self.__NullLabel.setText(e.args[0].args[0])
                     if debug == True:
                         logging.error("端口{}打开出错".format(e))
+
             else:
                 if debug == True:
                     logging.debug("无可用串口")

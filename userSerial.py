@@ -22,7 +22,7 @@ logging.basicConfig(level=logging.DEBUG, format=__LOG_FORMAT, )
 # logging.basicConfig(level=logging.ERROR, format=LOG_FORMAT, )
 
 # 是否打印调试信息标志
-debug = False
+debug = True
 # 接收线程中轮询周期 单位秒
 rcvPeriod = 0.01
 # 波特率列表
@@ -177,7 +177,7 @@ class userSerial(QObject):
         except Exception as e:
             if debug == True:
                 logging.warning("{}-无法打开{}".format(port,e))
-            return False
+            raise Exception(e)
         # 当端口已被打开时执行
         if (self.port.isOpen() ==True):
             if debug == True:
@@ -193,7 +193,6 @@ class userSerial(QObject):
             threading.Thread(target=self._recvHandle, args=(),daemon=True).start()
             if debug == True:
                 logging.debug("开启接收线程")
-        return True
 
     def close(self):
         """
