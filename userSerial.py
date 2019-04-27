@@ -22,9 +22,11 @@ logging.basicConfig(level=logging.DEBUG, format=__LOG_FORMAT, )
 # logging.basicConfig(level=logging.ERROR, format=LOG_FORMAT, )
 
 # 是否打印调试信息标志
-debug = True
+debug = False
 # 接收线程中轮询周期 单位秒
 rcvPeriod = 0.01
+# 接收线程缓存最大值
+rcvBuffMaxLen = 1024*1024
 # 波特率列表
 suportBandRateList = (300, 600, 1200, 2400, 4800, 9600, 14400, 19200, 38400, 56000, 57600, 115200, 230400, 460800, 500000, 576000, 921600, 1000000, 1152000, 1500000, 2000000, 2500000, 3000000, 3500000, 4000000)
 
@@ -290,7 +292,7 @@ class userSerial(QObject):
             self.__RcvBuff.clear()
             self.__RcvBuffLock.release()
         else:
-            buf = None
+            buf = bytes()
         return buf
 
     # read(size=1) return bytes
@@ -314,6 +316,9 @@ class userSerial(QObject):
                     self.__RcvBuffLock.acquire()
                     rcv = self.port.read(count)
                     self.__RcvBuff += rcv
+                    # 如果缓存数据超长 截取最新部分
+                    if len(self.__RcvBuff) > rcvBuffMaxLen:
+                        self.__RcvBuff = self.__RcvBuff[len(self.__RcvBuff)-rcvBuffMaxLen:]
                     self.__RcvBuffLock.release()
 
                     if debug == True:
