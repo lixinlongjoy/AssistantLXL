@@ -11,7 +11,7 @@ import userComboBox
 class Ui_AssistantLXL(object):
     def setupUi(self, AssistantLXL):
         AssistantLXL.setObjectName("AssistantLXL")
-        AssistantLXL.resize(846, 702)
+        AssistantLXL.resize(985, 673)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/picture/images/Picture/7.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         AssistantLXL.setWindowIcon(icon)
@@ -143,6 +143,9 @@ class Ui_AssistantLXL(object):
         self.pushButtonOpen.setChecked(False)
         self.pushButtonOpen.setObjectName("pushButtonOpen")
         self.horizontalLayout_14.addWidget(self.pushButtonOpen)
+        self.pushButtonUpdate = QtWidgets.QPushButton(self.groupBoxSerialSet)
+        self.pushButtonUpdate.setObjectName("pushButtonUpdate")
+        self.horizontalLayout_14.addWidget(self.pushButtonUpdate)
         self.horizontalLayout_14.setStretch(0, 1)
         self.verticalLayout_26.addLayout(self.horizontalLayout_14)
         self.horizontalLayout_15 = QtWidgets.QHBoxLayout()
@@ -342,7 +345,7 @@ class Ui_AssistantLXL(object):
         self.verticalLayout_3.addWidget(self.tabWidget)
         AssistantLXL.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(AssistantLXL)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 846, 23))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 985, 23))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -630,7 +633,7 @@ class Ui_AssistantLXL(object):
         self.label_4.setBuddy(self.lineEditPeriodMs)
 
         self.retranslateUi(AssistantLXL)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         self.comboBoxBand.setCurrentIndex(-1)
         QtCore.QMetaObject.connectSlotsByName(AssistantLXL)
 
@@ -643,6 +646,7 @@ class Ui_AssistantLXL(object):
         self.groupBoxSerialSet.setTitle(_translate("AssistantLXL", "Serial Set"))
         self.comboBoxPort.setItemText(0, _translate("AssistantLXL", "No Port Can Be Use"))
         self.pushButtonOpen.setText(_translate("AssistantLXL", "Open"))
+        self.pushButtonUpdate.setText(_translate("AssistantLXL", "Update"))
         self.label_3.setText(_translate("AssistantLXL", "BandRate"))
         self.groupBox_datasize.setTitle(_translate("AssistantLXL", "Datas"))
         self.radioButtonData8Bit.setText(_translate("AssistantLXL", "8Bit"))

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>846</width>
-    <height>702</height>
+    <width>985</width>
+    <height>673</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -28,7 +28,7 @@
        <enum>QTabWidget::Triangular</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="documentMode">
        <bool>true</bool>
@@ -226,7 +226,7 @@
                       <item>
                        <layout class="QVBoxLayout" name="verticalLayout_26">
                         <item>
-                         <layout class="QHBoxLayout" name="horizontalLayout_14" stretch="1,0">
+                         <layout class="QHBoxLayout" name="horizontalLayout_14" stretch="1,0,0">
                           <item>
                            <widget class="QComboBox" name="comboBoxPort">
                             <property name="sizePolicy">
@@ -258,6 +258,13 @@
                             </property>
                             <property name="checked">
                              <bool>false</bool>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QPushButton" name="pushButtonUpdate">
+                            <property name="text">
+                             <string>Update</string>
                             </property>
                            </widget>
                           </item>
@@ -698,7 +705,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>846</width>
+     <width>985</width>
      <height>23</height>
     </rect>
    </property>

@@ -245,12 +245,13 @@ class userMain(QMainWindow,Ui_AssistantLXL):
                     self.on_pushButtonOpen_toggled(False)
                 self.__comBoxPortBuf = text
 
-    # 鼠标移入控件事件
+    # 鼠标移入控件事件 原定移入时更新串口设备列表
     @QtCore.pyqtSlot()
     def on_comboBoxPort_enterEventSignal(self):
         if debug == True:
-            logging.debug("鼠标移入comboBoxPort控件，即将更新串口列表")
-        self.__update_comboBoxPortList()
+            # logging.debug("鼠标移入comboBoxPort控件，即将更新串口列表")
+            logging.debug("鼠标移入comboBoxPort控件")
+        # self.__update_comboBoxPortList()# 由于系统调用时间过长，取消自动更新为手动更新
     # def on_comboBoxPort_dropdown(self,event):
     #     print(event)
     #
@@ -455,8 +456,14 @@ class userMain(QMainWindow,Ui_AssistantLXL):
         self.pushButtonOpen.setText(_translate("AssistantLXL", "Open"))
         # 设置Checked状态会导致on_pushButtonOpen_toggled触发
         self.pushButtonOpen.setChecked(False)
-
-
+    # 串口设备更新按键
+    @QtCore.pyqtSlot()
+    def on_pushButtonUpdate_pressed(self):
+        if debug == True:
+            logging.debug("更新串口设备开始")
+        self.__update_comboBoxPortList()
+        if debug == True:
+            logging.debug("更新串口设备结束")
 # 串口接收设置
 #     # ASCII接收显示
 # #     self.radioButtonRxAscii
